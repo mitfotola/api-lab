@@ -31,6 +31,10 @@
 
 ## Part A
 - Step A4, status codes when the other user reads, changes and deletes:
+  - read (GET /api/ratings/{id}): 404 `{"error":"not found"}`
+  - change (PUT /api/ratings/{id}): 400 `{"error":"rating ID <id> not found"}`
+  - delete (DELETE /api/ratings/{id}): 400 `{"error":"rating ID <id> not found"}`
+  - In every case the owner could still read the rating afterwards with the same stars.
 
 ## Part B
 1.
