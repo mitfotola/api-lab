@@ -3,6 +3,38 @@
 API tests for [QuickPizza](https://quickpizza.grafana.com) with pytest and requests
 (ITCS386, API Testing lab).
 
+## Install and run
+
+macOS / Linux:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest -v
+```
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+pytest -v
+```
+
+Save a full run as an HTML report:
+
+```bash
+pytest -v --html=report.html --self-contained-html
+```
+
+Expected result: `32 passed, 1 xfailed`. The xfail is Defect 1, described in RESULTS.md.
+
+Every test that changes data creates its own user through the `auth` fixture in
+`conftest.py`, so no test uses the public token to create or change ratings, and
+every test can run alone.
+
 ## Input domain model: POST /api/ratings
 
 | Characteristic | Blocks | Values in the tests |
